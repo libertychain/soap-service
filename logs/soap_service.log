@@ -1,0 +1,63 @@
+2026-05-17 15:59:32,942 [INFO] Initializing application {urn:gestao.matriculas.uern}GestaoMatriculaService...
+2026-05-17 15:59:32,984 [INFO] Banco SQLite inicializado: matriculas.db
+2026-05-17 15:59:40,918 [INFO] Initializing application {urn:gestao.matriculas.uern}GestaoMatriculaService...
+2026-05-17 15:59:40,935 [INFO] Banco SQLite inicializado: matriculas.db
+2026-05-17 15:59:42,270 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.0.6:8000
+2026-05-17 15:59:42,271 [INFO] [33mPress CTRL+C to quit[0m
+2026-05-17 15:59:54,616 [INFO] 127.0.0.1 - - [17/May/2026 15:59:54] "GET /?wsdl HTTP/1.1" 200 -
+2026-05-17 15:59:54,647 [INFO] OP=registrar_matricula aluno=ALU-001 curso=CUR-TI
+2026-05-17 15:59:54,653 [INFO] Matricula criada: MAT-0001
+2026-05-17 15:59:54,654 [INFO] 127.0.0.1 - - [17/May/2026 15:59:54] "POST / HTTP/1.1" 200 -
+2026-05-17 16:00:13,439 [INFO] OP=consultar_matricula id=MAT-0001
+2026-05-17 16:00:13,450 [INFO] 127.0.0.1 - - [17/May/2026 16:00:13] "POST / HTTP/1.1" 200 -
+2026-05-17 16:00:13,473 [INFO] OP=cancelar_matricula id=MAT-0001 auth=False
+2026-05-17 16:00:13,473 [WARNING] AUTH FALHOU — cancelar_matricula id=MAT-0001
+2026-05-17 16:00:13,473 [ERROR] Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+Traceback (most recent call last):
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 173, in process_request
+    ctx.out_object = self.call_wrapper(ctx)
+                     ~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 242, in call_wrapper
+    return ctx.descriptor.service_class.call_wrapper(ctx)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\service.py", line 194, in call_wrapper
+    return ctx.function(*args)
+           ~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\one\Documents\soap-service\soap_service.py", line 170, in cancelar_matricula
+    raise Fault('Client.Unauthorized',
+                'Credenciais WS-Security invalidas ou ausentes')
+spyne.model.fault.Fault: Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+2026-05-17 16:00:13,475 [INFO] 127.0.0.1 - - [17/May/2026 16:00:13] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 16:00:27,510 [INFO] OP=cancelar_matricula id=MAT-0001 auth=False
+2026-05-17 16:00:27,510 [WARNING] AUTH FALHOU — cancelar_matricula id=MAT-0001
+2026-05-17 16:00:27,510 [ERROR] Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+Traceback (most recent call last):
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 173, in process_request
+    ctx.out_object = self.call_wrapper(ctx)
+                     ~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 242, in call_wrapper
+    return ctx.descriptor.service_class.call_wrapper(ctx)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\service.py", line 194, in call_wrapper
+    return ctx.function(*args)
+           ~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\one\Documents\soap-service\soap_service.py", line 170, in cancelar_matricula
+    raise Fault('Client.Unauthorized',
+                'Credenciais WS-Security invalidas ou ausentes')
+spyne.model.fault.Fault: Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+2026-05-17 16:00:27,518 [INFO] 127.0.0.1 - - [17/May/2026 16:00:27] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 16:00:27,536 [INFO] OP=cancelar_matricula id=MAT-0001 auth=True
+2026-05-17 16:00:27,542 [INFO] Matricula cancelada: MAT-0001
+2026-05-17 16:00:27,543 [INFO] 127.0.0.1 - - [17/May/2026 16:00:27] "POST / HTTP/1.1" 200 -
+2026-05-17 16:00:36,476 [INFO] 127.0.0.1 - - [17/May/2026 16:00:36] "GET /?wsdl HTTP/1.1" 200 -
+2026-05-17 16:00:47,866 [INFO] OP=registrar_matricula aluno=ALU-001 curso=CUR-TI
+2026-05-17 16:00:47,873 [INFO] Matricula criada: MAT-0002
+2026-05-17 16:00:47,881 [INFO] 127.0.0.1 - - [17/May/2026 16:00:47] "POST / HTTP/1.1" 200 -
+2026-05-17 16:00:47,899 [INFO] OP=listar_matriculas_ativas aluno=ALU-001
+2026-05-17 16:00:47,901 [INFO] 127.0.0.1 - - [17/May/2026 16:00:47] "POST / HTTP/1.1" 200 -
+2026-05-17 16:00:47,916 [INFO] OP=excluir_matricula id=MAT-0002 auth=True
+2026-05-17 16:00:47,922 [INFO] Matricula excluida: MAT-0002
+2026-05-17 16:00:47,922 [INFO] 127.0.0.1 - - [17/May/2026 16:00:47] "POST / HTTP/1.1" 200 -

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Esquema XSD — Gestão de Matrículas (Unidade 3)
+    Namespace: urn:gestao.matriculas.uern
+    Serviço  : GestaoMatriculaService
+-->
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="urn:gestao.matriculas.uern"
+    xmlns:tns="urn:gestao.matriculas.uern"
+    elementFormDefault="qualified">
+
+    <!-- ===== SEGURANÇA — WS-Security UsernameToken ===== -->
+
+    <xs:complexType name="UsernameToken">
+        <xs:sequence>
+            <xs:element name="Username" type="xs:string" minOccurs="1"/>
+            <xs:element name="Password" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="WSSecurity">
+        <xs:sequence>
+            <xs:element name="UsernameToken" type="tns:UsernameToken" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ===== ENTIDADE PRINCIPAL ===== -->
+
+    <xs:complexType name="Matricula">
+        <xs:sequence>
+            <xs:element name="id_matricula"  type="xs:string" minOccurs="0" nillable="true"/>
+            <xs:element name="id_aluno"      type="xs:string" minOccurs="0" nillable="true"/>
+            <xs:element name="id_curso"      type="xs:string" minOccurs="0" nillable="true"/>
+            <!-- Valores possíveis: ATIVA | CANCELADA | NAO_ENCONTRADA | SEM_MATRICULAS -->
+            <xs:element name="status"        type="xs:string" minOccurs="0" nillable="true"/>
+            <xs:element name="data_registro" type="xs:string" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MatriculaArray">
+        <xs:sequence>
+            <xs:element name="Matricula" type="tns:Matricula"
+                        minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ===== RESPOSTA GENÉRICA ===== -->
+
+    <xs:complexType name="RespostaOperacao">
+        <xs:sequence>
+            <!-- "true" ou "false" -->
+            <xs:element name="sucesso"  type="xs:string" minOccurs="0" nillable="true"/>
+            <xs:element name="mensagem" type="xs:string" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ===== TIPOS DE MENSAGEM — ENTRADA ===== -->
+
+    <xs:complexType name="registrar_matricula">
+        <xs:sequence>
+            <xs:element name="id_aluno" type="xs:string" minOccurs="1"/>
+            <xs:element name="id_curso" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="consultar_matricula">
+        <xs:sequence>
+            <xs:element name="id_matricula" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="listar_matriculas_ativas">
+        <xs:sequence>
+            <xs:element name="id_aluno" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cancelar_matricula">
+        <xs:sequence>
+            <xs:element name="id_matricula" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="excluir_matricula">
+        <xs:sequence>
+            <xs:element name="id_matricula" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ===== TIPOS DE MENSAGEM — SAÍDA ===== -->
+
+    <xs:complexType name="registrar_matriculaResponse">
+        <xs:sequence>
+            <xs:element name="registrar_matriculaResult"
+                        type="tns:Matricula" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="consultar_matriculaResponse">
+        <xs:sequence>
+            <xs:element name="consultar_matriculaResult"
+                        type="tns:Matricula" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="listar_matriculas_ativasResponse">
+        <xs:sequence>
+            <xs:element name="listar_matriculas_ativasResult"
+                        type="tns:MatriculaArray" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cancelar_matriculaResponse">
+        <xs:sequence>
+            <xs:element name="cancelar_matriculaResult"
+                        type="tns:RespostaOperacao" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="excluir_matriculaResponse">
+        <xs:sequence>
+            <xs:element name="excluir_matriculaResult"
+                        type="tns:RespostaOperacao" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ===== ELEMENTOS GLOBAIS ===== -->
+
+    <xs:element name="Matricula"                    type="tns:Matricula"/>
+    <xs:element name="MatriculaArray"               type="tns:MatriculaArray"/>
+    <xs:element name="RespostaOperacao"             type="tns:RespostaOperacao"/>
+    <xs:element name="WSSecurity"                   type="tns:WSSecurity"/>
+
+    <xs:element name="registrar_matricula"          type="tns:registrar_matricula"/>
+    <xs:element name="consultar_matricula"          type="tns:consultar_matricula"/>
+    <xs:element name="listar_matriculas_ativas"     type="tns:listar_matriculas_ativas"/>
+    <xs:element name="cancelar_matricula"           type="tns:cancelar_matricula"/>
+    <xs:element name="excluir_matricula"            type="tns:excluir_matricula"/>
+
+    <xs:element name="registrar_matriculaResponse"      type="tns:registrar_matriculaResponse"/>
+    <xs:element name="consultar_matriculaResponse"      type="tns:consultar_matriculaResponse"/>
+    <xs:element name="listar_matriculas_ativasResponse" type="tns:listar_matriculas_ativasResponse"/>
+    <xs:element name="cancelar_matriculaResponse"       type="tns:cancelar_matriculaResponse"/>
+    <xs:element name="excluir_matriculaResponse"        type="tns:excluir_matriculaResponse"/>
+
+</xs:schema>
