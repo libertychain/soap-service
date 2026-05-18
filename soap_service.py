@@ -23,8 +23,15 @@ logger = logging.getLogger('GestaoMatriculas')
 # ===== BANCO DE DADOS =====
 DB_PATH = 'matriculas.db'
 
+def _conn():
+    # timeout=10 → espera até 10s se outra conexão estiver gravando
+    # antes de levantar "database is locked"
+    c = sqlite3.connect(DB_PATH, timeout=10)
+    c.execute("PRAGMA journal_mode=WAL")
+    return c
+
 def init_db():
-    conn = sqlite3.connect(DB_PATH)
+    conn = _conn()
     conn.execute('''
         CREATE TABLE IF NOT EXISTS matriculas (
             id_matricula  TEXT PRIMARY KEY,
@@ -39,12 +46,14 @@ def init_db():
     logger.info("Banco SQLite inicializado: %s", DB_PATH)
 
 def _proximo_id():
-    conn = sqlite3.connect(DB_PATH)
+    # Usa MAX do ID real (não COUNT) — sobrevive a DELETEs sem gerar duplicatas.
+    conn = _conn()
     cur = conn.cursor()
-    cur.execute("SELECT COUNT(*) FROM matriculas")
-    n = cur.fetchone()[0]
+    cur.execute("SELECT MAX(CAST(SUBSTR(id_matricula, 5) AS INTEGER)) FROM matriculas")
+    row = cur.fetchone()
     conn.close()
-    return f"MAT-{n + 1:04d}"
+    proximo = (row[0] or 0) + 1
+    return f"MAT-{proximo:04d}"
 
 # ===== WS-SECURITY — usuários permitidos =====
 _USUARIOS = {
@@ -97,16 +106,16 @@ class GestaoMatriculaService(ServiceBase):
     @rpc(Unicode, Unicode, _returns=Matricula)
     def registrar_matricula(ctx, id_aluno, id_curso):
         logger.info("OP=registrar_matricula aluno=%s curso=%s", id_aluno, id_curso)
+        conn = None
         try:
             id_mat = _proximo_id()
             data = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            conn = sqlite3.connect(DB_PATH)
+            conn = _conn()
             conn.execute(
                 "INSERT INTO matriculas VALUES (?, ?, ?, ?, ?)",
                 (id_mat, id_aluno, id_curso, 'ATIVA', data)
             )
             conn.commit()
-            conn.close()
             logger.info("Matricula criada: %s", id_mat)
             return Matricula(
                 id_matricula=id_mat, id_aluno=id_aluno,
@@ -114,13 +123,20 @@ class GestaoMatriculaService(ServiceBase):
             )
         except Exception as exc:
             logger.error("ERRO registrar_matricula: %s", exc)
+            if conn is not None:
+                try: conn.rollback()
+                except Exception: pass
             raise Fault('Server', f'Erro interno: {exc}')
+        finally:
+            if conn is not None:
+                try: conn.close()
+                except Exception: pass
 
     # READ — individual
     @rpc(Unicode, _returns=Matricula)
     def consultar_matricula(ctx, id_matricula):
         logger.info("OP=consultar_matricula id=%s", id_matricula)
-        conn = sqlite3.connect(DB_PATH)
+        conn = _conn()
         row = conn.execute(
             "SELECT * FROM matriculas WHERE id_matricula = ?", (id_matricula,)
         ).fetchone()
@@ -140,7 +156,7 @@ class GestaoMatriculaService(ServiceBase):
     @rpc(Unicode, _returns=Iterable(Matricula))
     def listar_matriculas_ativas(ctx, id_aluno):
         logger.info("OP=listar_matriculas_ativas aluno=%s", id_aluno)
-        conn = sqlite3.connect(DB_PATH)
+        conn = _conn()
         rows = conn.execute(
             "SELECT * FROM matriculas WHERE id_aluno = ? AND status = 'ATIVA'",
             (id_aluno,)
@@ -169,7 +185,7 @@ class GestaoMatriculaService(ServiceBase):
             logger.warning("AUTH FALHOU — cancelar_matricula id=%s", id_matricula)
             raise Fault('Client.Unauthorized',
                         'Credenciais WS-Security invalidas ou ausentes')
-        conn = sqlite3.connect(DB_PATH)
+        conn = _conn()
         existe = conn.execute(
             "SELECT 1 FROM matriculas WHERE id_matricula = ?", (id_matricula,)
         ).fetchone()
@@ -201,7 +217,7 @@ class GestaoMatriculaService(ServiceBase):
             logger.warning("AUTH FALHOU — excluir_matricula id=%s", id_matricula)
             raise Fault('Client.Unauthorized',
                         'Credenciais WS-Security invalidas ou ausentes')
-        conn = sqlite3.connect(DB_PATH)
+        conn = _conn()
         existe = conn.execute(
             "SELECT 1 FROM matriculas WHERE id_matricula = ?", (id_matricula,)
         ).fetchone()
