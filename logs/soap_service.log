@@ -485,3 +485,183 @@ spyne.model.fault.Fault: Fault(Server: 'Erro interno: database is locked')
 2026-05-17 21:37:33,250 [INFO] OP=registrar_matricula aluno=ALU-210 curso=CIENCIA-COMP
 2026-05-17 21:37:33,256 [INFO] Matricula criada: MAT-0008
 2026-05-17 21:37:33,277 [INFO] 127.0.0.1 - - [17/May/2026 21:37:33] "POST / HTTP/1.1" 200 -
+2026-05-17 22:17:32,646 [INFO] OP=cancelar_matricula id=? auth=True
+2026-05-17 22:17:32,646 [WARNING] AUTH FALHOU — cancelar_matricula id=?
+2026-05-17 22:17:32,647 [ERROR] Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+Traceback (most recent call last):
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 173, in process_request
+    ctx.out_object = self.call_wrapper(ctx)
+                     ~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 242, in call_wrapper
+    return ctx.descriptor.service_class.call_wrapper(ctx)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\service.py", line 194, in call_wrapper
+    return ctx.function(*args)
+           ~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\one\Documents\soap-service\soap_service.py", line 186, in cancelar_matricula
+    raise Fault('Client.Unauthorized',
+                'Credenciais WS-Security invalidas ou ausentes')
+spyne.model.fault.Fault: Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+2026-05-17 22:17:32,659 [INFO] 127.0.0.1 - - [17/May/2026 22:17:32] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 22:17:32,683 [INFO] OP=consultar_matricula id=?
+2026-05-17 22:17:32,686 [WARNING] Matricula nao encontrada: ?
+2026-05-17 22:17:32,687 [INFO] 127.0.0.1 - - [17/May/2026 22:17:32] "POST / HTTP/1.1" 200 -
+2026-05-17 22:17:32,703 [INFO] OP=excluir_matricula id=? auth=True
+2026-05-17 22:17:32,703 [WARNING] AUTH FALHOU — excluir_matricula id=?
+2026-05-17 22:17:32,703 [ERROR] Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+Traceback (most recent call last):
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 173, in process_request
+    ctx.out_object = self.call_wrapper(ctx)
+                     ~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 242, in call_wrapper
+    return ctx.descriptor.service_class.call_wrapper(ctx)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\service.py", line 194, in call_wrapper
+    return ctx.function(*args)
+           ~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\one\Documents\soap-service\soap_service.py", line 218, in excluir_matricula
+    raise Fault('Client.Unauthorized',
+                'Credenciais WS-Security invalidas ou ausentes')
+spyne.model.fault.Fault: Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+2026-05-17 22:17:32,704 [INFO] 127.0.0.1 - - [17/May/2026 22:17:32] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 22:17:32,714 [INFO] OP=listar_matriculas_ativas aluno=?
+2026-05-17 22:17:32,717 [INFO] Nenhuma matricula ativa para aluno ?
+2026-05-17 22:17:32,718 [INFO] 127.0.0.1 - - [17/May/2026 22:17:32] "POST / HTTP/1.1" 200 -
+2026-05-17 22:17:32,730 [INFO] OP=registrar_matricula aluno=? curso=?
+2026-05-17 22:17:32,738 [INFO] Matricula criada: MAT-0009
+2026-05-17 22:17:32,742 [INFO] 127.0.0.1 - - [17/May/2026 22:17:32] "POST / HTTP/1.1" 200 -
+2026-05-17 22:18:12,002 [INFO] OP=cancelar_matricula id=? auth=True
+2026-05-17 22:18:12,002 [WARNING] AUTH FALHOU — cancelar_matricula id=?
+2026-05-17 22:18:12,002 [ERROR] Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+Traceback (most recent call last):
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 173, in process_request
+    ctx.out_object = self.call_wrapper(ctx)
+                     ~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 242, in call_wrapper
+    return ctx.descriptor.service_class.call_wrapper(ctx)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\service.py", line 194, in call_wrapper
+    return ctx.function(*args)
+           ~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\one\Documents\soap-service\soap_service.py", line 186, in cancelar_matricula
+    raise Fault('Client.Unauthorized',
+                'Credenciais WS-Security invalidas ou ausentes')
+spyne.model.fault.Fault: Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+2026-05-17 22:18:12,011 [INFO] 127.0.0.1 - - [17/May/2026 22:18:12] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 22:18:12,049 [INFO] OP=consultar_matricula id=?
+2026-05-17 22:18:12,054 [WARNING] Matricula nao encontrada: ?
+2026-05-17 22:18:12,055 [INFO] 127.0.0.1 - - [17/May/2026 22:18:12] "POST / HTTP/1.1" 200 -
+2026-05-17 22:18:12,069 [INFO] OP=excluir_matricula id=? auth=True
+2026-05-17 22:18:12,069 [WARNING] AUTH FALHOU — excluir_matricula id=?
+2026-05-17 22:18:12,069 [ERROR] Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+Traceback (most recent call last):
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 173, in process_request
+    ctx.out_object = self.call_wrapper(ctx)
+                     ~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 242, in call_wrapper
+    return ctx.descriptor.service_class.call_wrapper(ctx)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\service.py", line 194, in call_wrapper
+    return ctx.function(*args)
+           ~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\one\Documents\soap-service\soap_service.py", line 218, in excluir_matricula
+    raise Fault('Client.Unauthorized',
+                'Credenciais WS-Security invalidas ou ausentes')
+spyne.model.fault.Fault: Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+2026-05-17 22:18:12,071 [INFO] 127.0.0.1 - - [17/May/2026 22:18:12] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 22:18:12,084 [INFO] OP=listar_matriculas_ativas aluno=?
+2026-05-17 22:18:12,088 [INFO] 127.0.0.1 - - [17/May/2026 22:18:12] "POST / HTTP/1.1" 200 -
+2026-05-17 22:18:12,101 [INFO] OP=registrar_matricula aluno=? curso=?
+2026-05-17 22:18:12,111 [INFO] Matricula criada: MAT-0010
+2026-05-17 22:18:12,114 [INFO] 127.0.0.1 - - [17/May/2026 22:18:12] "POST / HTTP/1.1" 200 -
+2026-05-17 23:19:08,562 [ERROR] XMLSyntaxError('Opening and ending tag mismatch: id_aluno line 4 and registrar_matricula, line 6, column 33') in string b'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:gestao.matriculas.uern">\r\n   <soapenv:Body>\r\n      <urn:registrar_matricula>\r\n         <urn:id_aluno>ALU-999\r\n         <urn:id_curso>CUR-X</urn:id_curso>\r\n      </urn:registrar_matricula>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>\r\n'
+2026-05-17 23:19:08,589 [INFO] 127.0.0.1 - - [17/May/2026 23:19:08] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:20:24,312 [ERROR] XMLSyntaxError('Opening and ending tag mismatch: id_aluno line 4 and registrar_matricula, line 6, column 33') in string b'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:gestao.matriculas.uern">\r\n   <soapenv:Body>\r\n      <urn:registrar_matricula>\r\n         <urn:id_aluno>ALU-999\r\n         <urn:id_curso>CUR-X</urn:id_curso>\r\n      </urn:registrar_matricula>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>\r\n'
+2026-05-17 23:20:24,325 [INFO] 127.0.0.1 - - [17/May/2026 23:20:24] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:21:14,317 [INFO] 127.0.0.1 - - [17/May/2026 23:21:14] "[31m[1mGET / HTTP/1.1[0m" 405 -
+2026-05-17 23:21:23,844 [INFO] 127.0.0.1 - - [17/May/2026 23:21:23] "[31m[1mHEAD / HTTP/1.1[0m" 405 -
+2026-05-17 23:21:28,995 [ERROR] XMLSyntaxError('Opening and ending tag mismatch: id_aluno line 4 and registrar_matricula, line 6, column 33') in string b'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:gestao.matriculas.uern">\r\n   <soapenv:Body>\r\n      <urn:registrar_matricula>\r\n         <urn:id_aluno>ALU-999\r\n         <urn:id_curso>CUR-X</urn:id_curso>\r\n      </urn:registrar_matricula>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>\r\n'
+2026-05-17 23:21:29,004 [INFO] 127.0.0.1 - - [17/May/2026 23:21:29] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:22:45,483 [ERROR] XMLSyntaxError('Opening and ending tag mismatch: id_aluno line 4 and registrar_matricula, line 6, column 33') in string '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:gestao.matriculas.uern">\r\n   <soapenv:Body>\r\n      <urn:registrar_matricula>\r\n         <urn:id_aluno>ALU-999\r\n         <urn:id_curso>CUR-X</urn:id_curso>\r\n      </urn:registrar_matricula>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>\r\n'
+2026-05-17 23:22:45,492 [INFO] 127.0.0.1 - - [17/May/2026 23:22:45] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:22:58,644 [ERROR] XMLSyntaxError('Opening and ending tag mismatch: id_aluno line 5 and registrar_matricula, line 7, column 33') in string '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"\r\n                  xmlns:urn="urn:matricula">\r\n   <soapenv:Body>\r\n      <urn:registrar_matricula>\r\n         <urn:id_aluno>ALU-999\r\n         <urn:id_curso>CUR-X</urn:id_curso>\r\n      </urn:registrar_matricula>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>'
+2026-05-17 23:22:58,652 [INFO] 127.0.0.1 - - [17/May/2026 23:22:58] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:26:07,721 [INFO] OP=cancelar_matricula id=MAT-0002 auth=False
+2026-05-17 23:26:07,722 [WARNING] AUTH FALHOU — cancelar_matricula id=MAT-0002
+2026-05-17 23:26:07,722 [ERROR] Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+Traceback (most recent call last):
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 173, in process_request
+    ctx.out_object = self.call_wrapper(ctx)
+                     ~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 242, in call_wrapper
+    return ctx.descriptor.service_class.call_wrapper(ctx)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\service.py", line 194, in call_wrapper
+    return ctx.function(*args)
+           ~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\one\Documents\soap-service\soap_service.py", line 186, in cancelar_matricula
+    raise Fault('Client.Unauthorized',
+                'Credenciais WS-Security invalidas ou ausentes')
+spyne.model.fault.Fault: Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+2026-05-17 23:26:07,731 [INFO] 127.0.0.1 - - [17/May/2026 23:26:07] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:27:06,948 [ERROR] XMLSyntaxError('Namespace prefix urn on WSSecurity is not defined, line 1, column 16') in string '<urn:WSSecurity>\r\n   <urn:UsernameToken>\r\n      <urn:Username>admin</urn:Username>\r\n      <urn:Password>senha-errada</urn:Password>\r\n   </urn:UsernameToken>\r\n</urn:WSSecurity>\r\n'
+2026-05-17 23:27:06,958 [INFO] 127.0.0.1 - - [17/May/2026 23:27:06] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:28:05,162 [INFO] 127.0.0.1 - - [17/May/2026 23:28:05] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:28:13,307 [ERROR] XMLSyntaxError('Namespace prefix urn on WSSecurity is not defined, line 1, column 16') in string '<urn:WSSecurity>\r\n   <urn:UsernameToken>\r\n      <urn:Username>admin</urn:Username>\r\n      <urn:Password>senha-errada</urn:Password>\r\n   </urn:UsernameToken>\r\n</urn:WSSecurity>\r\n'
+2026-05-17 23:28:13,315 [INFO] 127.0.0.1 - - [17/May/2026 23:28:13] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:28:50,016 [INFO] 127.0.0.1 - - [17/May/2026 23:28:50] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:28:50,199 [ERROR] Error on request:
+Traceback (most recent call last):
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+    ~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\server\wsgi.py", line 310, in __call__
+    return self.handle_rpc(req_env, start_response)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\server\wsgi.py", line 419, in handle_rpc
+    contexts = self.generate_contexts(initial_ctx, in_string_charset)
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\server\_base.py", line 73, in generate_contexts
+    self.app.in_protocol.decompose_incoming_envelope(ctx,
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\protocol\soap\soap11.py", line 214, in decompose_incoming_envelope
+    if body_document.tag == '{%s}Fault' % self.ns_soap_env:
+       ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'tag'
+2026-05-17 23:29:03,923 [INFO] 127.0.0.1 - - [17/May/2026 23:29:03] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:30:39,430 [INFO] 127.0.0.1 - - [17/May/2026 23:30:39] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:32:04,868 [INFO] OP=cancelar_matricula id=MAT-0001 auth=True
+2026-05-17 23:32:04,868 [WARNING] AUTH FALHOU — cancelar_matricula id=MAT-0001
+2026-05-17 23:32:04,868 [ERROR] Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+Traceback (most recent call last):
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 173, in process_request
+    ctx.out_object = self.call_wrapper(ctx)
+                     ~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\application.py", line 242, in call_wrapper
+    return ctx.descriptor.service_class.call_wrapper(ctx)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\one\AppData\Local\Programs\Python\Python313\Lib\site-packages\spyne\service.py", line 194, in call_wrapper
+    return ctx.function(*args)
+           ~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\one\Documents\soap-service\soap_service.py", line 186, in cancelar_matricula
+    raise Fault('Client.Unauthorized',
+                'Credenciais WS-Security invalidas ou ausentes')
+spyne.model.fault.Fault: Fault(Client.Unauthorized: 'Credenciais WS-Security invalidas ou ausentes')
+2026-05-17 23:32:04,879 [INFO] 127.0.0.1 - - [17/May/2026 23:32:04] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2026-05-17 23:35:51,139 [INFO] OP=consultar_matricula id=MAT-9999
+2026-05-17 23:35:51,143 [WARNING] Matricula nao encontrada: MAT-9999
+2026-05-17 23:35:51,155 [INFO] 127.0.0.1 - - [17/May/2026 23:35:51] "POST / HTTP/1.1" 200 -
+2026-05-17 23:45:50,832 [INFO] OP=consultar_matricula id=MAT-0001
+2026-05-17 23:45:50,849 [INFO] 127.0.0.1 - - [17/May/2026 23:45:50] "POST / HTTP/1.1" 200 -
+2026-05-17 23:46:16,791 [INFO] OP=consultar_matricula id=MAT-0001
+2026-05-17 23:46:16,804 [INFO] 127.0.0.1 - - [17/May/2026 23:46:16] "POST / HTTP/1.1" 200 -
+2026-05-18 00:05:55,974 [INFO] 127.0.0.1 - - [18/May/2026 00:05:55] "GET /?wsdl HTTP/1.1" 200 -
+2026-05-18 00:05:56,232 [INFO] 127.0.0.1 - - [18/May/2026 00:05:56] "[31m[1mGET /favicon.ico HTTP/1.1[0m" 405 -
+2026-05-18 00:08:45,706 [INFO] Initializing application {urn:gestao.matriculas.uern}GestaoMatriculaService...
+2026-05-18 00:08:45,715 [INFO] Banco SQLite inicializado: matriculas.db
+2026-05-18 00:08:47,070 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.0.6:8000
+2026-05-18 00:08:47,070 [INFO] [33mPress CTRL+C to quit[0m
+2026-05-18 00:08:53,940 [INFO] 127.0.0.1 - - [18/May/2026 00:08:53] "GET /?wsdl HTTP/1.1" 200 -
